@@ -1,3 +1,4 @@
+//Defines the complete Spring Batch job with all steps and chunk-based processing.
 package com.ecom.giftcardwinner.config;
 
 import com.ecom.giftcardwinner.model.Order;

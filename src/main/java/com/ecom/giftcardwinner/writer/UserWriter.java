@@ -1,3 +1,4 @@
+// Persists User entities to the database using JPA.
 package com.ecom.giftcardwinner.writer;
 
 import com.ecom.giftcardwinner.model.User;

@@ -1,3 +1,4 @@
+// Validates and filters incoming User or Order data before writing.
 package com.ecom.giftcardwinner.processor;
 
 import com.ecom.giftcardwinner.model.Order;

@@ -1,3 +1,4 @@
+// Reads user data from a remote API with retry and fault tolerance.
 package com.ecom.giftcardwinner.reader;
 
 import com.ecom.giftcardwinner.model.User;

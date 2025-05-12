@@ -1,3 +1,4 @@
+//Tasklet that selects a random winner from eligible users based on total order amount.
 package com.ecom.giftcardwinner.tasklet;
 
 import com.ecom.giftcardwinner.dto.EligibleUser;

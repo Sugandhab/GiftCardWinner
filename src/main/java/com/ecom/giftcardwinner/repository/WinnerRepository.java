@@ -1,3 +1,4 @@
+// Provides database access methods for querying winner records.
 package com.ecom.giftcardwinner.repository;
 
 import com.ecom.giftcardwinner.model.Winner;

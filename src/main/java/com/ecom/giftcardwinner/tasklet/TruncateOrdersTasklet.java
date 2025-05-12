@@ -1,3 +1,4 @@
+// Tasklet that truncates the orders table and resets ID before importing fresh data.
 package com.ecom.giftcardwinner.tasklet;
 
 import org.slf4j.Logger;

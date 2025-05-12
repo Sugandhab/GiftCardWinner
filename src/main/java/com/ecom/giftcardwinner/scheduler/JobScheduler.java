@@ -1,3 +1,4 @@
+// Schedules the batch job to run at fixed intervals or on application startup.
 package com.ecom.giftcardwinner.scheduler;
 
 import jakarta.annotation.PostConstruct;

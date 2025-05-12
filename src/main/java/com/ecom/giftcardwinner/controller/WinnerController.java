@@ -1,3 +1,4 @@
+// Exposes REST endpoints to view the latest and all winners.
 package com.ecom.giftcardwinner.controller;
 
 import com.ecom.giftcardwinner.model.Winner;
