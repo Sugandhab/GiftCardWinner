@@ -33,7 +33,7 @@ This application is ideal for automating data ingestion and reward logic in an e
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 GiftCardWinner/
@@ -138,7 +138,7 @@ mvn spring-boot:run
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 mvn test
@@ -153,7 +153,7 @@ logging.level.com.ecom.giftcardwinner=DEBUG
 
 ---
 
-## 🐳 Docker Usage
+## Docker Usage
 
 ### Build Docker Image
 ```bash
@@ -218,7 +218,7 @@ These endpoints are exposed via `WinnerController` for easy access winner data:
 - Returns list of all winners.
 - Example response:
 ```json
-[{"userId":5,"name":"Chelsey Dietrich","amount":103.34,"createdAt":"2025-05-12T23:05:40.372011"},....]
+[{"userId":5,"name":"Chelsey Dietrich","amount":103.34,"createdAt":"2025-05-12T23:05:40.372011"},..]
 ```
 
 Both endpoints run on:  
