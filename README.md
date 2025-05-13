@@ -2,7 +2,7 @@
 
 **Gift Card Winner** is a Spring Boot + Spring Batch application that performs the following batch jobs:
 
-1. **User Import Job** – Fetches users from an external REST API.
+1. **User Import Job** – Fetches users from an external API.
 2. **Order Import Job** – Reads and imports order data from a CSV file.
 3. **Winner Selection Job** – Selects a weekly gift card winner based on a configurable order amount threshold.
 
@@ -41,18 +41,23 @@ GiftCardWinner/
 │   ├── main/
 │   │   ├── java/com/ecom/giftcardwinner/
 │   │   │   ├── config/              # Batch configuration
-│   │   │   ├── job/                 # Job definitions
+│   │   │   ├── controller/          # Controller (Winner details)
+│   │   │   ├── schduler/            # Job definitions
 │   │   │   ├── model/               # Entity classes (User, Order)
 │   │   │   ├── processor/           # Data processors
 │   │   │   ├── reader/              # API and CSV readers
 │   │   │   ├── repository/          # Spring Data JPA repositories
 │   │   │   └── writer/              # Database writers
+│   │   │   └── tasklet/             # table truncate and winner selection tasklet
 │   │   └── resources/
 │   │       └── application.properties
 │   └── test/
 │       └── java/com/ecom/giftcardwinner/
+│           ├── config/
+│           └── controller/
 │           ├── reader/
-│           └── job/
+│           ├── schduler/
+│           ├── tasklet/
 ├── Dockerfile
 ├── pom.xml
 └── README.md
@@ -147,10 +152,6 @@ mvn test
 - Unit tests included.
 - Uses Mockito and H2.
 - Debug logs can be enabled:
-```properties
-logging.level.com.ecom.giftcardwinner=DEBUG
-```
-
 ---
 
 ## Docker Usage
@@ -162,7 +163,7 @@ docker build -t giftcardwinner:latest .
 
 ### Run Docker Container
 ```bash
-docker run -p 8080:8080   -e PURCHASE_CSV_PATH=/app/data/purchases.csv   -v "$(pwd)/data:/app/data"   --name giftcardwinner giftcardwinner:latest
+docker run -p 8080:8080   -e ORDER_CSV_PATH=/app/data/order.csv   -v "$(pwd)/data:/app/data"   --name giftcardwinner giftcardwinner:latest
 ```
 
 ### Stop and Remove
@@ -175,13 +176,13 @@ docker rm giftcardwinner
 
 To ensure the job runs correctly, **make sure you mount the correct CSV file containing order data** into the Docker container. This file is required for the batch job to process purchases and select a winner.
 - Replace $(pwd)/data/order.csv with the absolute path to your actual CSV file, if needed.
-- The value of PURCHASE_CSV_PATH must match the target path inside the container (/app/data/order.csv).
+- The value of ORDER_CSV_PATH must match the target path inside the container (/app/data/order.csv).
 
 ### Example Docker Run Command
 
 ```bash
 docker run -p 8080:8080 \
-  -e PURCHASE_CSV_PATH=/app/data/order.csv \
+  -e ORDER_CSV_PATH=/app/data/order.csv \
   -v "$(pwd)/data/order.csv:/app/data/order.csv" \
   --name giftcardwinner \
   giftcardwinner:latest
